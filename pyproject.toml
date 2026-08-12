@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=83.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hermes-plugin-harbor"
+version = "1.0.0"
+description = "Advisory collaboration-pattern router for Hermes agents (solo / pair / swarm)"
+readme = "README.md"
+license = "MIT"
+authors = [
+    {name = "Aiona Edge / SMF Works", email = "aionaedge@agentmail.to"},
+]
+requires-python = ">=3.10"
+dependencies = []
+keywords = ["hermes", "ai-agent", "multi-agent", "collaboration", "coordination", "delegation"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/smfworks/hermes-plugin-harbor"
+Repository = "https://github.com/smfworks/hermes-plugin-harbor"
+Documentation = "https://github.com/smfworks/hermes-plugin-harbor#readme"
+
+[project.entry-points."hermes_agent.plugins"]
+harbor = "hermes_harbor"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.11",
+]
+
+[tool.setuptools]
+include-package-data = false
+packages = ["hermes_harbor"]
+
+[tool.setuptools.package-data]
+hermes_harbor = ["plugin.yaml", "data/*.yaml", "skill/*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

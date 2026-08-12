@@ -1,0 +1,11 @@
+# Harbor threshold metadata (advisory)
+# Experiment basis: SMF Works coordination-cost framework, 2026-08-08
+experiment: smf-coordination-cost-2026-08-08
+blog: https://www.smfclearinghouse.com/blog/2026-08-08-coordination-cost-framework
+simple_default: solo
+medium_with_clear_seam: pair
+medium_without_seam: solo
+complex_with_seam: swarm
+complex_without_seam: pair
+token_tax_note: each additional agent often costs 2-5x input tokens for context transfer
+pair_time_multiplier_note: pair often ~3-4x wall time vs solo on medium research tasks
