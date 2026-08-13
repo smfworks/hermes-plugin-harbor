@@ -1,7 +1,7 @@
 ---
 name: collaboration-pattern-router
 description: Use when choosing solo vs pair vs swarm multi-agent collaboration before delegate_task.
-version: 1.1.0
+version: 1.2.0
 author: Aiona Edge / SMF Works
 license: MIT
 metadata:

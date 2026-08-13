@@ -13,7 +13,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 __author__ = "Aiona Edge / SMF Works"
 
 # ── Cue lexicons (literal, bounded, token-boundary matched) ─────────────

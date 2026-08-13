@@ -1,5 +1,5 @@
 name: harbor
-version: 1.1.0
+version: 1.2.0
 description: >
   Advisory collaboration-pattern router for multi-agent work (solo / pair / swarm).
   Helps agents decide when coordination cost is worth paying before launching
