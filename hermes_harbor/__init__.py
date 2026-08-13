@@ -39,8 +39,10 @@ def _safe_text(value: Any, *, max_len: int = 8000) -> str:
         return ""
     if not isinstance(value, str):
         value = str(value)
-    # Strip controls except newline/tab
-    value = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", "", value)
+    # Strip C0/C1 controls (keep newline/tab) and CSI/OSC terminal sequences
+    value = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]", "", value)
+    value = re.sub(r"\x1b\[[0-9;?]*[ -/]*[@-~]", "", value)
+    value = re.sub(r"\x1b\][^\x07\x1b]*(?:\x07|\x1b\\)?", "", value)
     if len(value) > max_len:
         value = value[:max_len]
     return value.strip()

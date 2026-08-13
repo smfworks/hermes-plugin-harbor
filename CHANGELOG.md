@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented here.
 
+## [1.2.0] — 2026-08-13
+
+### Fixed
+- Bare English words (`split`, `worker`, `divide`, `parallel`, `two parts`) no longer count as collaboration seams. Oppositional case: “Divide the chapter into two parts” was pair; it is now solo.
+- Tool/slash input now strips C1 controls and CSI/OSC sequences, not only C0.
+
+### Changed
+- Seam lexicon is phrase-level only
+- Package classifier: Production/Stable; include package data in wheels
+
 ## [1.1.0] — 2026-08-13
 
 ### Added

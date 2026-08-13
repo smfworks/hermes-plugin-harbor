@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hermes-plugin-harbor"
-version = "1.1.0"
+version = "1.2.0"
 description = "Advisory collaboration-pattern router for Hermes agents (solo / pair / swarm)"
 readme = "README.md"
 license = "MIT"
@@ -15,7 +15,7 @@ requires-python = ">=3.10"
 dependencies = []
 keywords = ["hermes", "ai-agent", "multi-agent", "collaboration", "coordination", "delegation"]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
@@ -39,7 +39,7 @@ dev = [
 ]
 
 [tool.setuptools]
-include-package-data = false
+include-package-data = true
 packages = ["hermes_harbor"]
 
 [tool.setuptools.package-data]

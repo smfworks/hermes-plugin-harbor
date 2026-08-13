@@ -112,7 +112,7 @@ hermes-plugin-harbor/
 ## Production status
 
 - CI: GitHub Actions on Python 3.10–3.12
-- Tests: `python -m pytest -q` (15) + `self_test()` (8)
+- Tests: `python -m pytest -q` (18) + `self_test()` (9)
 - Security: see SECURITY.md — advisory classifier, fail-closed handlers
 - Contribute: see CONTRIBUTING.md
 - Changelog: CHANGELOG.md

@@ -13,7 +13,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 __author__ = "Aiona Edge / SMF Works"
 
 # ── Cue lexicons (literal, bounded, token-boundary matched) ─────────────
@@ -69,6 +69,8 @@ _SIMPLE_CUES = (
     "status check",
 )
 
+# Phrase-level seams only. Bare "split"/"worker"/"divide"/"parallel"
+# match ordinary English and falsely promote medium work to pair.
 _SEAM_CUES = (
     "you research i analyze",
     "research and analyze",
@@ -77,13 +79,12 @@ _SEAM_CUES = (
     "frontend and backend",
     "api and runner",
     "write and review",
-    "parallel",
-    "split",
-    "divide",
-    "two parts",
+    "between two agents",
     "two agents",
-    "worker",
-    "subtask",
+    "split research",
+    "split the work",
+    "independent subtasks",
+    "coordinator and workers",
     "module a",
     "module b",
 )
@@ -402,6 +403,11 @@ def self_test() -> dict[str, Any]:
             "name": "max_agents_cap",
             "task": "Build a multi-domain multi-file end-to-end benchmark orchestration architecture with parallel workers.",
             "max_agents": 1,
+            "expect_pattern": "solo",
+        },
+        {
+            "name": "chapter_structure_not_pair",
+            "task": "Research Ollama and write an analysis. Divide the chapter into two parts.",
             "expect_pattern": "solo",
         },
     ]
