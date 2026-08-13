@@ -18,6 +18,8 @@ Hermes teams default to multi-agent too easily. Our 2026-08-08 experiment found:
 
 Blog: [The Coordination Cost](https://www.smfclearinghouse.com/blog/2026-08-08-coordination-cost-framework)
 
+Current version: **1.1.0**.
+
 ## Install
 
 ```bash
