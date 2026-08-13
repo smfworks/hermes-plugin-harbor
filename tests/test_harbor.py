@@ -6,18 +6,16 @@ import json
 import sys
 from pathlib import Path
 
-import pytest
-
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from hermes_harbor.engine import format_human, recommend, self_test  # noqa: E402
-from hermes_harbor import (  # noqa: E402
+from hermes_harbor import (
     _recommend_handler,
     _self_test_handler,
     _slash_handler,
     _status_handler,
 )
+from hermes_harbor.engine import format_human, recommend, self_test
 
 
 def test_self_test_all_pass():

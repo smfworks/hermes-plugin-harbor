@@ -1,0 +1,10 @@
+include plugin.yaml
+include LICENSE
+include README.md
+include CHANGELOG.md
+include hermes_harbor/plugin.yaml
+include hermes_harbor/data/*.yaml
+include hermes_harbor/skill/*.md
+graft hermes_harbor
+graft tests
+global-exclude __pycache__ *.py[cod]

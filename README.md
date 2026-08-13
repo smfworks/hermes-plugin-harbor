@@ -93,6 +93,30 @@ python -c "from hermes_harbor.engine import self_test; import json; print(json.d
 
 Built during SMF Works' Lofoten sprint (Aug 2026). The name *Harbor* is deliberate: Arctic fishing fleets wait for weather windows; stockfish seasons reward discipline over constant departure. Multi-agent systems need the same restraint.
 
+## Architecture
+
+```
+hermes-plugin-harbor/
+├── plugin.yaml              # Git/source-install manifest
+├── __init__.py              # dual-mode register() proxy
+├── hermes_harbor/           # installable package
+│   ├── engine.py            # deterministic classifier (no I/O)
+│   ├── plugin.yaml
+│   ├── data/thresholds.yaml
+│   └── skill/SKILL.md
+└── tests/test_harbor.py
+```
+
+`engine.recommend()` is pure: no network, no filesystem writes, no subprocesses. Plugin registration wires tools/slash/CLI only. **No hooks.**
+
+## Production status
+
+- CI: GitHub Actions on Python 3.10–3.12
+- Tests: `python -m pytest -q` (15) + `self_test()` (8)
+- Security: see SECURITY.md — advisory classifier, fail-closed handlers
+- Contribute: see CONTRIBUTING.md
+- Changelog: CHANGELOG.md
+
 ## License
 
 MIT — SMF Works / Aiona Edge

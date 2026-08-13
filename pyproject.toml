@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hermes-plugin-harbor"
-version = "1.0.0"
+version = "1.1.0"
 description = "Advisory collaboration-pattern router for Hermes agents (solo / pair / swarm)"
 readme = "README.md"
 license = "MIT"
