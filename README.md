@@ -1,8 +1,12 @@
 # hermes-plugin-harbor
 
+[![CI](https://github.com/smfworks/hermes-plugin-harbor/actions/workflows/ci.yml/badge.svg)](https://github.com/smfworks/hermes-plugin-harbor/actions/workflows/ci.yml)
+
 **Leave harbor only when the weather justifies the fleet.**
 
 Advisory collaboration-pattern router for [Hermes Agent](https://github.com/NousResearch/hermes-agent). Recommends **solo**, **pair**, or **swarm** before multi-agent launches — based on real coordination-cost measurements from SMF Works.
+
+Current release: **1.1.0**. See [ARCHITECTURE.md](ARCHITECTURE.md), [SECURITY.md](SECURITY.md), and [CONTRIBUTING.md](CONTRIBUTING.md).
 
 > Cache-safe. No automatic hooks. No mid-conversation model swap. Tools + slash + CLI + bundled skill only.
 
@@ -85,9 +89,14 @@ hermes harbor self-test
 
 ```bash
 cd hermes-plugin-harbor
+python -m pip install -e ".[dev]"
 python -m pytest -q
+python -m ruff check .
 python -c "from hermes_harbor.engine import self_test; import json; print(json.dumps(self_test(), indent=2))"
 ```
+
+CI runs pytest + ruff on Python 3.10, 3.11, and 3.12, then verifies packaged
+plugin.yaml / thresholds / skill files are present in the wheel.
 
 ## Lofoten note
 
