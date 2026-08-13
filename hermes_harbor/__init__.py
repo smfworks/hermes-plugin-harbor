@@ -74,13 +74,13 @@ def _recommend_handler(args: dict, **kwargs: Any) -> str:
         seam = _parse_enum(args.get("seam_clarity"), {"clear", "weak", "none"})
         max_agents = _parse_optional_int(args.get("max_agents"))
         if args.get("complexity") not in (None, "") and complexity is None:
-            return json.dumps({"error": "complexity must be one of: simple, medium, complex"})
+            return json.dumps({"ok": False, "error": "complexity must be one of: simple, medium, complex"})
         if args.get("seam_clarity") not in (None, "") and seam is None:
-            return json.dumps({"error": "seam_clarity must be one of: clear, weak, none"})
+            return json.dumps({"ok": False, "error": "seam_clarity must be one of: clear, weak, none"})
         if args.get("max_agents") not in (None, "") and max_agents is None:
-            return json.dumps({"error": "max_agents must be an integer from 1 to 32"})
+            return json.dumps({"ok": False, "error": "max_agents must be an integer from 1 to 32"})
         if not task:
-            return json.dumps({"error": "task is required and must be non-empty text"})
+            return json.dumps({"ok": False, "error": "task is required and must be non-empty text"})
 
         rec = recommend(
             task,
