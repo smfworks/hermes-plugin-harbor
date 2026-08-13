@@ -201,14 +201,22 @@ def _seam(text: str, explicit: str | None) -> tuple[str, str]:
 
 
 def recommend(
-    task: str,
+    task: Any,
     *,
     complexity: str | None = None,
     seam_clarity: str | None = None,
     max_agents: int | None = None,
 ) -> HarborRecommendation:
     """Recommend solo | pair | swarm for a task description."""
-    text = (task or "").strip()
+    # Coerce non-string input to string; crash-safe handling of
+    # None, int, list, dict, etc. that might be passed by a caller.
+    if not isinstance(task, str):
+        if task is None:
+            text = ""
+        else:
+            text = str(task)
+    else:
+        text = task.strip()
     if not text:
         return HarborRecommendation(
             pattern="solo",
