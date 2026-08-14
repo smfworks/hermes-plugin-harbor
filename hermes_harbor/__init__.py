@@ -29,7 +29,7 @@ PLUGIN_NAME = "harbor"
 PLUGIN_VERSION = __version__
 PLUGIN_DESCRIPTION = (
     "Advisory collaboration-pattern router for multi-agent work "
-    "(solo / pair / swarm) with self-test and outcome logging."
+    "(solo / pair / swarm) with oppositional self-test."
 )
 PLUGIN_AUTHOR = __author__
 
@@ -95,8 +95,9 @@ def _recommend_handler(args: dict, **kwargs: Any) -> str:
             "plugin_version": PLUGIN_VERSION,
         }
         return dumps(payload)
-    except Exception as e:  # noqa: BLE001 — tool contract: never raise
-        return json.dumps({"error": str(e)})
+    except Exception:
+        logger.exception("harbor_recommend failed")
+        return json.dumps({"success": False, "error": "internal error"})
 
 
 def _status_handler(args: dict, **kwargs: Any) -> str:
@@ -114,16 +115,18 @@ def _status_handler(args: dict, **kwargs: Any) -> str:
                 "hooks": "none (advisory only; cache-safe)",
             }
         )
-    except Exception as e:  # noqa: BLE001
-        return json.dumps({"error": str(e)})
+    except Exception:
+        logger.exception("harbor_status failed")
+        return json.dumps({"success": False, "error": "internal error"})
 
 
 def _self_test_handler(args: dict, **kwargs: Any) -> str:
     try:
         result = self_test()
         return dumps(result)
-    except Exception as e:  # noqa: BLE001
-        return json.dumps({"error": str(e)})
+    except Exception:
+        logger.exception("harbor_self_test failed")
+        return json.dumps({"success": False, "error": "internal error"})
 
 
 def _slash_handler(args: str = "", **kwargs: Any) -> str:
